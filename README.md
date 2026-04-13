@@ -1,47 +1,47 @@
-# 📰 Turkish News Classification Project (V2.0)
+# 📰 Turkish News Classification Project (V3.0 - Deep Learning)
 
-Bu proje, Türkiye'nin popüler haber kaynaklarından (BBC Türkçe, Sabah Roza) çekilen haber başlıklarını 10 farklı kategoride sınıflandıran uçtan uca bir Doğal Dil İşleme (NLP) çalışmasıdır.
+Bu proje, Türkiye'nin popüler haber kaynaklarından çekilen başlıkları 10 farklı kategoride sınıflandıran, Naive Bayes'ten BERT'e uzanan evrimsel bir Doğal Dil İşleme (NLP) çalışmasıdır.
 
-This is an end-to-end NLP project that classifies news headlines from popular Turkish sources (BBC Turkish, Sabah Roza) into 10 distinct categories.
-
----
-
-## 🚀 Proje Gelişimi / Project Evolution (V1.0 vs V2.0)
-
-Projenin V2.0 sürümü, ilk versiyonda karşılaşılan sınıf dengesizliği ve düşük doğruluk sorunlarını çözmek amacıyla geliştirilmiştir.
-
-| Özellik / Feature | V1.0 (Baseline) | V2.0 (Advanced) |
-| :--- | :--- | :--- |
-| **Veri Hacmi / Data Volume** | ~1,200 Rows | **~5,700 Unique Rows** |
-| **Kategoriler / Categories** | 6 | **10** (Added: Politics, World, etc.) |
-| **Ön İşleme / Preprocessing** | Basic Tokenization | **Zeyrek Lemmatization (Morphological Analysis)** |
-| **Doğruluk / Accuracy** | 0.61 | **0.74** |
+This project is an evolutionary NLP study that classifies Turkish news headlines into 10 categories, evolving from Naive Bayes to State-of-the-Art BERT models.
 
 ---
 
-## 🛠️ Teknik Altyapı / Technical Stack
+## 🚀 Proje Evrimi / Project Evolution
 
-* **Veri Kazıma (Scraping):** Python, Selenium, BeautifulSoup (BBC Türkçe & Sabah Roza).
-* **Doğal Dil İşleme (NLP):** Zeyrek (Morphological Analyzer for Turkish), NLTK.
-* **Makine Öğrenmesi (ML):** Scikit-learn, LinearSVC (Balanced class weights), TF-IDF (1,3 N-Gram).
-* **Görselleştirme:** Seaborn, Matplotlib.
+Proje üç ana aşamada geliştirilmiş ve her aşamada başarı oranı (Accuracy) ciddi oranda artırılmıştır.
 
----
-
-## 📊 V2.0 Performans Özeti / Performance Summary
-
-V2.0 ile birlikte özellikle "Astroloji" ve "Spor" kategorilerinde **%90+** F1-skoruna ulaşılmıştır. Zeyrek kütüphanesi ile kelime köklerine (Lemmatization) inilmesi, modelin anlamsal başarısını ciddi oranda artırmıştır.
-
-With V2.0, the F1-score for "Astrology" and "Sports" reached **90%+**. Reducing words to their roots using the Zeyrek library significantly improved the model's semantic accuracy.
+| Versiyon | Teknoloji / Tech Stack | Başarı (Accuracy) | Temel Fark / Key Difference |
+| :--- | :--- | :--- | :--- |
+| **V1.0** | Naive Bayes / TF-IDF | **%61** | Baseline (Temel) Model. |
+| **V2.0** | LinearSVC / Zeyrek Lemm. | **%74** | Gelişmiş Ön İşleme (Kök bulma). |
+| **V3.0** | **BERTurk (Transformers)** | **%82.3** | **Bağlamsal Analiz (Deep Learning).** |
 
 ---
 
-## 🔮 Gelecek Planı / Future Roadmap (V3.0)
+## 🧠 V3.0 Teknik Detaylar / Technical Insights
 
-* [ ] **Deep Learning:** HuggingFace üzerinden `BERTurk` modeli ile ince ayar (Fine-tuning).
-* [ ] **Deployment:** Modelin bir API (FastAPI) üzerinden servis edilmesi.
-* [ ] **Real-time Scraping:** Canlı haber akışının otomatik sınıflandırılması.
+V3.0 aşamasında klasik makine öğrenmesi yöntemleri terk edilerek derin öğrenme mimarisine geçilmiştir.
+
+* **Model:** `dbmdz/bert-base-turkish-cased` (BERTurk)
+* **Yöntem:** Fine-tuning (İnce Ayar)
+* **Veri Seti:** 5,700+ Benzersiz Haber Başlığı (BBC Türkçe & Sabah Roza)
+* **Donanım:** Tesla T4 GPU (Google Colab)
+
+### 📊 Neden BERT?
+Klasik modeller kelimelere tekil olarak bakarken, BERT kelimelerin cümle içindeki sağ ve sol bağlamlarını eşzamanlı olarak analiz eder. Bu sayede "Arkeoloji" haberlerini "Bilim" kategorisiyle eşleştirebilecek kadar derin bir semantik anlayış geliştirir.
 
 ---
+
+## 🛠️ Kurulum ve Kullanım / Setup
+
+1. Repoyu klonlayın: `git clone https://github.com/ismethakanaydogmus/News_Classification.git`
+2. Bağımlılıkları yükleyin: `pip install transformers datasets accelerate torch`
+3. V3 Not defterini (Notebook) GPU modunda çalıştırın.
+
+---
+
+## 🔮 Gelecek Vizyonu / Roadmap
+- [ ] **Model Deployment:** Hugging Face Spaces veya Streamlit ile canlı demo.
+- [ ] **Quantization:** Modelin boyutunu küçülterek mobil cihazlarda (React Native) çalışabilir hale getirmek.
 
 **Hazırlayan / Developed by:** [İsmet Hakan Aydoğmuş](https://github.com/ismethakanaydogmus)
